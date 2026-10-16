@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Meetbound books qualified sales meetings for B2B startups.">
+<title>Meetbound | Outbound sales for B2B startups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: nav, hero with a booked-calendar week, who/how/pricing bands, ROI calculator, founder note, FAQ, contact */
+:root{
+  --bg:#F3F6F5; --surface:#FFFFFF; --ink:#0E1E1B; --muted:#52645F; --line:#D6DFDC;
+  --accent:#0B7A66; --accent-ink:#FFFFFF; --signal:#FF6B3D; --soft:#E3EEEB;
+  --display:"Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1513; --surface:#12201D; --ink:#E6F0ED; --muted:#9DB2AC; --line:#22352F;
+  --accent:#3FD1B3; --accent-ink:#06120F; --signal:#FF8A63; --soft:#183029; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1513; --surface:#12201D; --ink:#E6F0ED; --muted:#9DB2AC; --line:#22352F;
+  --accent:#3FD1B3; --accent-ink:#06120F; --signal:#FF8A63; --soft:#183029; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;text-wrap:balance;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:12px 18px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.label{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font:700 22px var(--display);display:flex;align-items:center;gap:8px;text-decoration:none}
+.brand i{width:22px;height:22px;border-radius:6px;background:var(--accent);position:relative;display:inline-block}
+.brand i::after{content:"";position:absolute;right:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--signal);border:2px solid var(--bg)}
+.navlinks{display:flex;gap:20px;align-items:center;font-size:15px}
+.navlinks a{text-decoration:none;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+@media (max-width:760px){.navlinks a:not(.btn){display:none}}
+
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:56px 64px}
+.hero h1{font-size:clamp(36px,5.4vw,64px);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:18px;color:var(--muted);max-width:44ch;margin:18px 0 26px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.proof{margin-top:22px;font-size:14px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+.proof b{color:var(--ink)}
+
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;min-width:0}
+.calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--display);font-weight:600}
+.calhead span{font:500 12px var(--mono);color:var(--muted)}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.day{display:grid;gap:6px;align-content:start;min-width:0}
+.day h4{margin:0;font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center}
+.slot{height:44px;border-radius:8px;background:var(--soft)}
+.slot.booked{background:var(--accent);color:var(--accent-ink);padding:6px 7px;font-size:11px;line-height:1.25;overflow:hidden;animation:pop .5s ease both}
+.slot.booked b{display:block;font-family:var(--display);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot.booked span{opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+@keyframes pop{from{transform:scale(.92)}to{transform:scale(1)}}
+.calfoot{margin-top:12px;display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.calfoot b{color:var(--signal);font-family:var(--display);font-size:16px}
+
+section{padding-block:56px;border-top:1px solid var(--line)}
+.shead{display:grid;gap:10px;margin-bottom:28px;max-width:640px}
+.shead h2{font-size:clamp(28px,3.6vw,42px)}
+.shead p{color:var(--muted);margin:0}
+
+.fit{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fit div{border-top:3px solid var(--ink);padding-top:14px}
+.fit h3{font-size:20px;margin-bottom:6px}
+.fit p{margin:0;color:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.steps div{padding:20px;border-right:1px solid var(--line)}
+.steps div:last-child{border-right:0}
+.steps small{font:500 12px var(--mono);color:var(--signal)}
+.steps h3{font-size:18px;margin:6px 0}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.plan.pick{border:2px solid var(--accent)}
+.plan .tag{align-self:flex-start;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;background:var(--accent);color:var(--accent-ink);padding:3px 8px;border-radius:6px}
+.plan h3{font-size:22px}
+.plan .price{font:700 34px var(--display);font-variant-numeric:tabular-nums}
+.plan .price small{font:400 15px var(--body);color:var(--muted)}
+.plan .meet{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.plan ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:6px;flex:1}
+.guarantee{margin-top:18px;padding:16px 18px;border-radius:12px;background:var(--soft);display:flex;gap:12px;align-items:flex-start}
+.guarantee b{font-family:var(--display)}
+
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.calc label{display:grid;gap:6px;font-weight:700;font-size:14px;margin-bottom:16px}
+.calc output{font-family:var(--mono);color:var(--accent);font-weight:500}
+.calc input[type=range]{width:100%;accent-color:var(--accent)}
+.result{background:var(--ink);color:var(--bg);border-radius:14px;padding:22px;display:grid;gap:14px;align-content:start}
+.result .big{font:700 clamp(32px,4vw,46px) var(--display);font-variant-numeric:tabular-nums;color:var(--bg)}
+.result .row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid color-mix(in srgb,var(--bg) 25%,transparent);padding-top:10px;font-variant-numeric:tabular-nums}
+.result small{opacity:.75}
+
+.founder{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;max-width:820px}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:700 30px var(--display)}
+.founder blockquote{margin:0;font-size:19px;line-height:1.55}
+.founder cite{display:block;margin-top:12px;font-style:normal;color:var(--muted);font-size:15px}
+
+details{border-bottom:1px solid var(--line);padding-block:14px;max-width:780px}
+summary{cursor:pointer;font:600 18px var(--display);list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--accent)}
+details[open] summary::after{content:"−"}
+details p{margin:8px 0 0;color:var(--muted)}
+
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:14px}
+form label{display:grid;gap:5px;font-weight:700;font-size:14px}
+input,select,textarea{font:inherit;font-size:15px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--signal);font-size:14px;min-height:1em;margin:0}
+.done{background:var(--soft);border-radius:16px;padding:22px}
+
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero .wrap,.calc,.contact{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps div:nth-child(2){border-right:0}
+  .steps div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .plans,.fit{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .steps div{border-right:0;border-bottom:1px solid var(--line)}
+  .two{grid-template-columns:1fr}
+  .founder{grid-template-columns:1fr}
+  .slot.booked span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>Meetbound</a>
+    <div class="navlinks">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn solid" href="#contact">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="label">Outbound sales for B2B startups</span>
+      <h1 style="margin-top:12px">Your calendar, <em>full of qualified sales calls.</em></h1>
+      <p>We find the decision-makers who need your product, start the conversation, and book meetings straight into your calendar. You show up and close.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#contact">Get a free sample lead list</a>
+        <a class="btn" href="#pricing">See pricing</a>
+      </div>
+      <div class="proof"><span><b>6+</b> meetings guaranteed in the pilot</span><span><b>Week 2</b> first meetings usually land</span></div>
+    </div>
+    <div class="cal" aria-label="Example week of booked sales meetings">
+      <div class="calhead">Your week <span>EXAMPLE</span></div>
+      <div class="days" id="days"></div>
+      <div class="calfoot"><span>Booked by Meetbound this week</span><b id="booked">0</b></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><span class="label">Who it's for</span><h2>Built for founders who are still the sales team.</h2></div>
+    <div class="fit">
+      <div><h3>B2B software startups</h3><p>Especially AI, automation and workflow tools with 5–50 people and a few paying customers.</p></div>
+      <div><h3>Founder-led sales</h3><p>You close deals well, but finding new prospects eats the time you need for product and customers.</p></div>
+      <div><h3>Not ready to hire</h3><p>A full-time sales hire is a big bet. Start with us and hire once the pipeline proves itself.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="shead"><span class="label">How it works</span><h2>From kickoff to booked meetings in about two weeks.</h2></div>
+    <div class="steps">
+      <div><small>WEEK 1</small><h3>Kickoff</h3><p>We agree on your ideal customer, the problem you solve and your offer.</p></div>
+      <div><small>WEEK 1</small><h3>Lead list</h3><p>We build a list of decision-makers who match that profile. You approve the messaging.</p></div>
+      <div><small>WEEKS 2–4</small><h3>Outreach</h3><p>Daily LinkedIn and email outreach, with follow-ups and same-day replies.</p></div>
+      <div><small>ONGOING</small><h3>Meetings</h3><p>Prospects book into your calendar with a short brief. You get a report every week.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="shead"><span class="label">Pricing</span><h2>Start with a 30-day pilot. Stay if it works.</h2><p>Prices exclude GST. Monthly plans can be stopped with 30 days' notice.</p></div>
+    <div class="plans">
+      <div class="plan pick">
+        <span class="tag">Start here</span>
+        <h3>30-day pilot</h3>
+        <div class="price">₹25,000 <small>one time</small></div>
+        <div class="meet">6 qualified meetings</div>
+        <ul><li>Ideal customer profile</li><li>300-contact lead list</li><li>LinkedIn and email outreach</li><li>Meetings booked into your calendar</li></ul>
+        <a class="btn solid" href="#contact">Start a pilot</a>
+      </div>
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price">₹40,000 <small>/ month</small></div>
+        <div class="meet">6–8 qualified meetings</div>
+        <ul><li>Everything in the pilot</li><li>Fresh lead lists every month</li><li>Message testing</li><li>Monthly report</li></ul>
+        <a class="btn" href="#contact">Talk to us</a>
+      </div>
+      <div class="plan">
+        <h3>Growth</h3>
+        <div class="price">₹75,000 <small>/ month</small></div>
+        <div class="meet">10–12 qualified meetings</div>
+        <ul><li>Everything in Starter</li><li>We take first discovery calls</li><li>CRM setup</li><li>Weekly pipeline report</li></ul>
+        <a class="btn" href="#contact">Talk to us</a>
+      </div>
+    </div>
+    <div class="guarantee"><b>Pilot guarantee</b><span>If the pilot books fewer than 6 qualified meetings, we keep working for another month at no charge until it does.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><span class="label">Pipeline calculator</span><h2>What could 30 days of meetings be worth?</h2><p>Move the sliders to your own numbers.</p></div>
+    <div class="calc">
+      <div>
+        <label for="m">Qualified meetings per month <output id="mo">8</output><input id="m" type="range" min="4" max="20" value="8"></label>
+        <label for="c">Meetings that become customers <output id="co">15%</output><input id="c" type="range" min="5" max="40" value="15"></label>
+        <label for="d">Average deal size, per year <output id="do">₹6,00,000</output><input id="d" type="range" min="100000" max="3000000" step="50000" value="600000"></label>
+      </div>
+      <div class="result" aria-live="polite">
+        <small>New yearly revenue from one month of meetings</small>
+        <div class="big" id="rev">₹7,20,000</div>
+        <div class="row"><span>New customers</span><b id="cust">1.2</b></div>
+        <div class="row"><span>Pilot cost</span><b>₹25,000</b></div>
+        <div class="row"><span>Return on pilot</span><b id="roi">29×</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="founder">
+      <div class="avatar" aria-hidden="true">JA</div>
+      <div>
+        <blockquote>I spent my career selling RPA, process mining and AI solutions to businesses. I know how these buyers think, what they push back on, and what gets them to a first call. Now I do that for startups who have a great product and no time to find customers.</blockquote>
+        <cite>Juliet Arambam, Founder · <a href="https://linkedin.com/in/juliet-arambam1">LinkedIn</a></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="shead"><span class="label">FAQ</span><h2>Questions founders ask</h2></div>
+    <details open><summary>What counts as a qualified meeting?</summary><p>A call that actually happens with a decision-maker or strong influencer at a company that fits your ideal customer profile, who has agreed to talk about your product. No-shows and wrong-fit calls don't count.</p></details>
+    <details><summary>Will outreach go out in our name?</summary><p>Yes. Messages go out from your company's name, and you approve every message before outreach starts.</p></details>
+    <details><summary>Which markets do you cover?</summary><p>India first, plus the US, UK, Middle East and Southeast Asia for B2B software sold into mid-sized and enterprise companies.</p></details>
+    <details><summary>Do we need to buy any tools?</summary><p>Usually not for the pilot. If a paid tool like LinkedIn Sales Navigator helps, it's billed at cost with your approval.</p></details>
+    <details><summary>Can we stop anytime?</summary><p>The pilot is one month. Monthly plans can be stopped with 30 days' notice.</p></details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="shead" style="margin:0">
+      <span class="label">Get started</span>
+      <h2>See 20 companies that fit your ideal customer, free.</h2>
+      <p>Tell us about your product. We'll send a sample lead list for your market within 48 hours, and book a 20-minute call if it looks useful.</p>
+      <p style="margin-top:14px">Prefer email? Write to <b style="user-select:all">info@meetbound.io</b></p>
+    </div>
+    <div id="formBox">
+      <form id="leadForm" novalidate>
+        <div class="two">
+          <label for="fName">Your name<input id="fName" autocomplete="name"></label>
+          <label for="fCo">Company<input id="fCo" autocomplete="organization"></label>
+        </div>
+        <div class="two">
+          <label for="fEmail">Work email<input id="fEmail" type="email" autocomplete="email"></label>
+          <label for="fSite">Website<input id="fSite" placeholder="yourcompany.com"></label>
+        </div>
+        <label for="fWho">Who do you sell to?<textarea id="fWho" rows="3" placeholder="e.g. Finance heads at Indian manufacturing companies with 200–2,000 employees"></textarea></label>
+        <p class="err" id="fErr" role="alert"></p>
+        <button class="btn solid" type="submit" style="justify-self:start">Send me the sample list</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Meetbound · Outbound sales for B2B startups · Bengaluru</span><span style="user-select:all">info@meetbound.io</span></div>
+</footer>
+
+<script>
+const week=[
+  ["Mon",[["Finance head","Mfg, Pune"],null,null]],
+  ["Tue",[null,["COO","Logistics, Dubai"],null]],
+  ["Wed",[["IT director","Retail, Mumbai"],null,["VP Ops","Fintech, Singapore"]]],
+  ["Thu",[null,null,["CFO","Pharma, Hyderabad"]]],
+  ["Fri",[["Head of AP","Bank, Bengaluru"],["CTO","SaaS, London"],null]]
+];
+const days=document.getElementById("days");let n=0,delay=0;
+days.innerHTML=week.map(([d,slots])=>`<div class="day"><h4>${d}</h4>${slots.map(s=>{
+  if(!s)return'<div class="slot"></div>';n++;delay+=.12;
+  return `<div class="slot booked" style="animation-delay:${delay}s"><b>${s[0]}</b><span>${s[1]}</span></div>`}).join("")}</div>`).join("");
+document.getElementById("booked").textContent=n+" meetings";
+
+const inr=v=>"₹"+Math.round(v).toLocaleString("en-IN");
+const m=document.getElementById("m"),c=document.getElementById("c"),d=document.getElementById("d");
+function calc(){
+  const meet=+m.value,rate=+c.value/100,deal=+d.value,cust=meet*rate,rev=cust*deal;
+  document.getElementById("mo").textContent=meet;
+  document.getElementById("co").textContent=c.value+"%";
+  document.getElementById("do").textContent=inr(deal);
+  document.getElementById("rev").textContent=inr(rev);
+  document.getElementById("cust").textContent=cust.toFixed(1);
+  document.getElementById("roi").textContent=Math.round(rev/25000)+"×";
+}
+[m,c,d].forEach(el=>el.addEventListener("input",calc));calc();
+
+document.getElementById("leadForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  let err="";
+  if(!v("fName")||!v("fCo"))err="Please add your name and company.";
+  else if(!/^\S+@\S+\.\S+$/.test(v("fEmail")))err="Enter a work email, like you@company.com.";
+  else if(v("fWho").length<10)err="Tell us a little about who you sell to, so the sample list fits.";
+  document.getElementById("fErr").textContent=err;
+  if(err)return;
+  const co=v("fCo").replace(/[<>&"]/g,"");
+  document.getElementById("formBox").innerHTML=`<div class="done"><h3 style="font-size:22px;margin-bottom:8px">Thanks, we're on it.</h3><p style="margin:0">We'll email a sample list of 20 companies that fit ${co}'s ideal customer within 48 hours.</p><p style="margin:12px 0 0;font-size:14px;color:var(--muted)">Sample website: this form doesn't send anything yet.</p></div>`;
+});
+</script>
+
+</body>
+</html>
