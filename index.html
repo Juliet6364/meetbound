@@ -185,6 +185,13 @@ tbody th{font:600 14px var(--body);color:var(--muted);width:22%}
 .guarantee svg{width:34px;height:34px;color:var(--accent-deep);flex:none}
 .guarantee b{font:700 17px var(--display);display:block}
 
+/* diy promo */
+.diy{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;background:var(--ink);color:var(--on-ink);border-radius:24px;padding:34px}
+.diy>div{display:grid;gap:10px;max-width:640px}
+.diy .label{color:var(--accent)}
+.diy h2{font-size:clamp(26px,3.2vw,36px)}
+.diy p{color:var(--on-ink-mut)}
+
 /* calc */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px}
 .calc label{display:grid;gap:8px;font-weight:700;font-size:15px;margin-bottom:20px}
@@ -267,6 +274,7 @@ footer .brand{font-size:18px;color:var(--on-ink)}
       <a href="#compare">Why us</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="/ai">Meetbound AI</a>
       <a class="btn solid" href="#contact">Book a call</a>
     </div>
   </div>
@@ -443,6 +451,19 @@ footer .brand{font-size:18px;color:var(--on-ink)}
   </div>
 </section>
 
+<section style="padding-block:0 96px">
+  <div class="wrap">
+    <div class="diy reveal">
+      <div>
+        <span class="label">Prefer to do your own outreach?</span>
+        <h2>Meetbound AI writes it with you, from ₹199 a month.</h2>
+        <p>Cold call scripts, sales emails, email replies and LinkedIn messages written for your product and buyer in seconds. Plus a sales coach for any question. Try 3 answers free.</p>
+      </div>
+      <a class="btn solid" href="/ai">Try Meetbound AI free <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <section style="background:var(--surface);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="shead reveal"><span class="label">Pipeline calculator</span><h2>What could one month of meetings be worth?</h2><p>Move the sliders to your own numbers.</p></div>
@@ -524,6 +545,7 @@ footer .brand{font-size:18px;color:var(--on-ink)}
   <div class="wrap">
     <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Meetbound</a>
     <span>Outbound sales for B2B startups · Bengaluru, India</span>
+    <span><a href="/ai" style="text-decoration:none">Meetbound AI</a> · <a href="/terms" style="text-decoration:none">Terms</a> · <a href="/privacy" style="text-decoration:none">Privacy</a> · <a href="/refunds" style="text-decoration:none">Refunds</a> · <a href="/contact" style="text-decoration:none">Contact</a></span>
     <span>© 2026 Meetbound</span>
   </div>
 </footer>

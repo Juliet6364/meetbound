@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meetbound AI | Cold call scripts, sales emails and LinkedIn messages</title>
+<meta name="description" content="Write cold call scripts, sales emails, email replies and LinkedIn messages that get replies. 3 free answers, then plans from ₹199 a month.">
+<meta property="og:title" content="Meetbound AI | Your sales writing assistant">
+<meta property="og:description" content="Cold call scripts, sales emails, replies and LinkedIn messages written for your buyer in seconds. Try 3 free.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='6' width='24' height='24' rx='6' fill='%230FA88A'/%3E%3Ccircle cx='26' cy='6' r='5' fill='%23FF6B3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ink:#07140F; --ink-2:#0E221B; --on-ink:#E8F3EF; --on-ink-mut:#9FBDB3;
+  --bg:#F4F7F5; --surface:#FFFFFF; --text:#0E1E1B; --muted:#53655F; --line:#D8E1DD;
+  --accent:#0FA88A; --accent-deep:#0B7A66; --accent-soft:#E2F2EC; --signal:#FF6B3D; --gold:#F5B841;
+  --warn-soft:#FFF1D6; --warn:#8A5A00; --err:#B4372A;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.label{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--accent-deep)}
+.dark{background:var(--ink);color:var(--on-ink)}
+.dark .label{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--display);padding:12px 20px;border-radius:999px;border:1.5px solid currentColor;text-decoration:none;cursor:pointer;background:transparent;color:inherit;transition:transform .15s,background .15s;min-height:44px}
+.btn:hover{transform:translateY(-1px)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#03130E}
+.btn.solid:hover{background:#13C19F}
+.btn.small{padding:7px 14px;font-size:14px;min-height:36px}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+section{padding-block:80px}
+.shead{display:grid;gap:12px;max-width:700px;margin-bottom:36px}
+.shead h2{font-size:clamp(30px,4vw,46px)}
+.shead p{color:var(--muted);font-size:18px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--on-ink);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font:700 21px var(--display);display:flex;align-items:center;gap:10px;text-decoration:none;letter-spacing:-.02em}
+.brand sup{font:600 11px var(--mono);color:var(--ink);background:var(--accent);padding:2px 6px;border-radius:5px;letter-spacing:.04em;vertical-align:middle}
+.mark{width:22px;height:22px;border-radius:6px;background:var(--accent);position:relative;flex:none}
+.mark::after{content:"";position:absolute;right:-5px;top:-5px;width:11px;height:11px;border-radius:50%;background:var(--signal);border:2.5px solid var(--ink)}
+.links{display:flex;gap:24px;align-items:center;font-size:15px}
+.links a:not(.btn){text-decoration:none;color:var(--on-ink-mut)}
+.links a:not(.btn):hover{color:var(--on-ink)}
+@media (max-width:820px){.links a.hide-sm{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:64px 80px}
+.hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:760px;height:760px;background:radial-gradient(circle,rgba(15,168,138,.26),transparent 62%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:700;margin:18px 0}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),#7FE3C9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:19px;color:var(--on-ink-mut);max-width:48ch}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.chips span{font:500 13px var(--mono);color:var(--on-ink);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:999px}
+.demo{background:linear-gradient(180deg,var(--ink-2),#0A1A14);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.45);display:grid;gap:12px;min-width:0}
+.demo-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.demo-h b{font:600 15px var(--display)}
+.demo-h span{font:500 11px var(--mono);color:var(--on-ink-mut);letter-spacing:.08em}
+.ask{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;font-size:14px;color:var(--on-ink-mut)}
+.ask b{color:var(--on-ink);font-weight:700}
+.ans{background:#F4F7F5;color:var(--text);border-radius:14px;padding:14px 16px;font-size:14px;display:grid;gap:8px}
+.ans small{font:500 11px var(--mono);color:var(--accent-deep);letter-spacing:.08em;text-transform:uppercase}
+
+/* workspace */
+#tools{padding-top:64px}
+.acct{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin-bottom:18px}
+.acct .who{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14.5px;min-width:0}
+.acct .who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px}
+.badge{font:500 12px var(--mono);padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep)}
+.meter{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.meter .bar{width:140px;height:8px;border-radius:99px;background:var(--bg);overflow:hidden;border:1px solid var(--line)}
+.meter .bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+.linkbtn{background:none;border:0;padding:0;font:inherit;font-size:14px;color:var(--accent-deep);text-decoration:underline;cursor:pointer}
+.banner{border-radius:14px;padding:12px 16px;background:var(--warn-soft);color:var(--warn);font-size:14.5px;margin-bottom:18px}
+
+.desk{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:18px;align-items:start}
+@media (max-width:960px){.desk{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:16px;min-width:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:12px;padding:9px 13px;font:600 14.5px var(--display);cursor:pointer}
+.tab .ic{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:var(--surface);color:var(--accent-deep);font-size:13px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.tab[aria-selected="true"] .ic{background:var(--accent);color:var(--ink)}
+.tool-intro{font-size:15px;color:var(--muted)}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+label small{font-weight:400;color:var(--muted)}
+.lh{display:block}
+input,textarea,select{font:inherit;font-weight:400;font-size:15px;padding:11px 13px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);width:100%;min-width:0}
+textarea{resize:vertical;min-height:84px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:560px){.two{grid-template-columns:minmax(0,1fr)}}
+form,#fields,details.me .inner,.panel,.result,.result .sec{grid-template-columns:minmax(0,1fr)}
+label{min-width:0}
+select{text-overflow:ellipsis}
+details.me{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg)}
+details.me summary{cursor:pointer;font:600 15px var(--display);list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.me summary::-webkit-details-marker{display:none}
+details.me summary::after{content:"Edit";font:500 12px var(--mono);color:var(--accent-deep)}
+details.me[open] summary::after{content:"Done"}
+details.me summary span{font:400 13.5px var(--body);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1;text-align:right}
+details.me .inner{display:grid;gap:12px;margin-top:12px}
+.req{color:var(--signal)}
+.go-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.status{font-size:14px;color:var(--muted)}
+.status.err{color:var(--err)}
+
+.out{position:sticky;top:84px}
+@media (max-width:960px){.out{position:static}}
+.out-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.out-h .tag{font:500 11.5px var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:6px}
+.tag.ex{background:var(--warn-soft);color:var(--warn)}
+.tag.yours{background:var(--accent-soft);color:var(--accent-deep)}
+.result{display:grid;gap:14px;font-size:15px}
+.result .sec{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:8px;background:var(--surface)}
+.result .sec-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.result h4{font-size:16px}
+.result ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.result p{white-space:pre-wrap}
+.copy{font:500 12px var(--mono);border:1px solid var(--line);background:var(--bg);color:var(--accent-deep);border-radius:8px;padding:4px 10px;cursor:pointer;flex:none}
+.copy:hover{border-color:var(--accent)}
+.thinking{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;padding:24px 4px}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:b 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.upsell{border-radius:16px;background:var(--ink);color:var(--on-ink);padding:20px;display:grid;gap:10px}
+.upsell p{color:var(--on-ink-mut)}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+@media (max-width:1000px){.plans{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.plans{grid-template-columns:minmax(0,1fr)}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px;position:relative}
+.plan.pick{background:var(--ink);color:var(--on-ink);border-color:var(--ink);box-shadow:0 30px 70px rgba(7,20,15,.25)}
+.plan .tag{position:absolute;top:-12px;left:24px;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.1em;background:var(--signal);color:#fff;padding:5px 10px;border-radius:6px}
+.plan h3{font-size:21px}
+.plan .price{font:700 40px var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.plan .price small{font:400 15px var(--body);color:var(--muted);letter-spacing:0}
+.plan.pick .price small{color:var(--on-ink-mut)}
+.plan .uses{font:500 13px var(--mono);color:var(--accent-deep)}
+.plan.pick .uses{color:var(--accent)}
+.plan .per{font-size:13px;color:var(--muted)}
+.plan.pick .per{color:var(--on-ink-mut)}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;flex:1;color:var(--muted);font-size:15px}
+.plan.pick ul{color:var(--on-ink-mut)}
+.plan li{display:flex;gap:9px}
+.plan li::before{content:"";flex:none;width:16px;height:16px;margin-top:4px;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%230B7A66' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.plan .btn{width:100%}
+.plan.current{outline:2px solid var(--accent);outline-offset:2px}
+.pnote{margin-top:18px;font-size:14px;color:var(--muted)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+@media (max-width:860px){.faq{grid-template-columns:1fr;gap:24px}}
+.faq details{border-bottom:1px solid var(--line);padding-block:16px}
+.faq summary{cursor:pointer;font:600 18px var(--display);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent-deep);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:8px;color:var(--muted)}
+
+/* dialog */
+dialog{border:0;border-radius:22px;padding:0;max-width:440px;width:calc(100% - 32px);box-shadow:0 40px 100px rgba(0,0,0,.35);color:var(--text)}
+dialog::backdrop{background:rgba(7,20,15,.6)}
+.dlg{padding:26px;display:grid;gap:14px}
+.dlg h3{font-size:24px}
+.dlg p{color:var(--muted)}
+.x{position:absolute;right:14px;top:12px;border:0;background:none;font-size:24px;cursor:pointer;color:var(--muted)}
+
+footer{background:var(--ink);color:var(--on-ink-mut);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer nav{all:unset;display:flex;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--on-ink)}
+
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr;gap:36px}section{padding-block:64px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Meetbound <sup>AI</sup></a>
+    <div class="links">
+      <a class="hide-sm" href="#tools">Tools</a>
+      <a class="hide-sm" href="#pricing">Pricing</a>
+      <a class="hide-sm" href="/">Done-for-you outbound</a>
+      <button class="btn small" id="navSign" type="button">Sign in</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero dark">
+  <div class="wrap">
+    <div>
+      <span class="label">Meetbound AI · for salespeople and founders</span>
+      <h1>Sales messages that <em>get replies</em>, written in seconds.</h1>
+      <p class="lead">Cold call scripts, sales emails, email replies and LinkedIn messages written for your product and your buyer, using proven B2B sales methods. Or ask any sales question and get a straight answer.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#tools">Try 3 free answers</a>
+        <a class="btn" href="#pricing">Plans from ₹199</a>
+      </div>
+      <div class="chips"><span>Cold call scripts</span><span>New emails</span><span>Email replies</span><span>LinkedIn messages</span><span>Sales coach</span></div>
+    </div>
+    <div class="demo" aria-label="Example">
+      <div class="demo-h"><b>Reply to an email</b><span>EXAMPLE</span></div>
+      <div class="ask"><b>They wrote:</b> “Thanks, but we already use another tool for this. Not looking to change right now.”</div>
+      <div class="ans">
+        <small>Meetbound AI</small>
+        <p>Makes sense, and switching tools mid-year rarely makes sense anyway.</p>
+        <p>One quick question so I don't follow up for nothing: is month-end close still taking longer than you'd like, or has your current tool solved that?</p>
+        <p>If it's solved, I'll leave you alone. If not, happy to share what two finance teams like yours changed to get it under 5 days.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="shead"><span class="label">The tools</span><h2>Pick what you need to write.</h2><p>Fill in a few details, click Write it, and copy the result. Your details about your product are saved on this device, so you only type them once.</p></div>
+
+    <div class="banner" id="soon" hidden>Meetbound AI is opening soon. You can explore every tool and its example below.</div>
+
+    <div class="acct" id="acct">
+      <div class="who" id="who"><span class="badge">Free</span><span>Try 3 answers free. Sign in with your email to start.</span></div>
+      <div class="meter" id="meter" hidden><span id="meterTxt"></span><span class="bar"><i id="meterBar" style="width:0"></i></span></div>
+      <div class="who" id="acctActions"><button class="btn small" id="signBtn" type="button" style="color:var(--text)">Sign in</button></div>
+    </div>
+
+    <div class="desk">
+      <div class="panel">
+        <div class="tabs" role="tablist" id="tabs" aria-label="Tools"></div>
+        <p class="tool-intro" id="toolIntro"></p>
+        <form id="toolForm" novalidate>
+          <details class="me" id="meBox">
+            <summary>About you <span id="meSum">Add what you sell, so every answer fits</span></summary>
+            <div class="inner">
+              <label for="f_product"><span class="lh">What you sell <span class="req" id="reqProduct">*</span></span><textarea id="f_product" rows="2" placeholder="e.g. AI software that reads supplier invoices and enters them into Tally and SAP"></textarea></label>
+              <label for="f_buyer">Who you sell to<input id="f_buyer" placeholder="e.g. Finance heads at Indian manufacturers, 200–2,000 staff"></label>
+              <div class="two">
+                <label for="f_me">Your name and company<input id="f_me" placeholder="e.g. Priya, LedgerFlow"></label>
+                <label for="f_proof"><span class="lh">Proof you can mention <small>(optional)</small></span><input id="f_proof" placeholder="e.g. cut close time 40% at 2 clients"></label>
+              </div>
+            </div>
+          </details>
+          <div id="fields" style="display:grid;gap:14px"></div>
+          <p class="status err" id="formErr" role="alert"></p>
+          <div class="go-row">
+            <button class="btn solid" id="go" type="submit">Write it</button>
+            <span class="status" id="goNote">Uses 1 answer</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel out" aria-live="polite">
+        <div class="out-h"><h3 id="outTitle" style="font-size:20px">Example</h3><span class="tag ex" id="outTag">Example answer</span></div>
+        <div id="out" class="result"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="shead"><span class="label">Pricing</span><h2>Start free. Upgrade when it's earning its keep.</h2><p>Every plan includes all five tools. One answer is one script, email, reply, LinkedIn message or coaching answer. Cancel anytime.</p></div>
+    <div class="plans" id="plans">
+      <div class="plan" data-plan="free">
+        <h3>Free</h3>
+        <div class="price">₹0</div>
+        <div class="uses">3 answers, any tool</div>
+        <ul><li>All five tools</li><li>No card needed</li><li>Sign in with just your email</li></ul>
+        <a class="btn" href="#tools" style="color:var(--text)">Try it free</a>
+      </div>
+      <div class="plan" data-plan="p199">
+        <h3>Starter</h3>
+        <div class="price">₹199 <small>/ month</small></div>
+        <div class="uses">50 answers a month</div>
+        <div class="per">About ₹4 per answer</div>
+        <ul><li>All five tools</li><li>About 2 answers every working day</li><li>Cancel anytime</li></ul>
+        <button class="btn sub" type="button" data-plan="p199" style="color:var(--text)">Choose Starter</button>
+      </div>
+      <div class="plan pick" data-plan="p299">
+        <span class="tag">Most popular</span>
+        <h3>Pro</h3>
+        <div class="price">₹299 <small>/ month</small></div>
+        <div class="uses">150 answers a month</div>
+        <div class="per">About ₹2 per answer</div>
+        <ul><li>All five tools</li><li>About 7 answers every working day</li><li>Cancel anytime</li></ul>
+        <button class="btn solid sub" type="button" data-plan="p299">Choose Pro</button>
+      </div>
+      <div class="plan" data-plan="p399">
+        <h3>Power</h3>
+        <div class="price">₹399 <small>/ month</small></div>
+        <div class="uses">400 answers a month</div>
+        <div class="per">Under ₹1 per answer</div>
+        <ul><li>All five tools</li><li>For full-time outreach</li><li>Cancel anytime</li></ul>
+        <button class="btn sub" type="button" data-plan="p399" style="color:var(--text)">Choose Power</button>
+      </div>
+    </div>
+    <p class="pnote">Prices in Indian rupees. Payments by UPI, card or net banking through Razorpay, renewing monthly. Unused answers don't roll over. See our <a href="/refunds">cancellation and refund policy</a>.</p>
+    <p class="status" id="payMsg" role="status" style="margin-top:10px"></p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="shead" style="margin:0"><span class="label">FAQ</span><h2>Questions</h2><p>Anything else? Write to meetboundsales@gmail.com.</p></div>
+    <div>
+      <details open><summary>Who is this for?</summary><p>Salespeople, SDRs, founders and freelancers who sell to businesses and want better cold calls, emails and LinkedIn messages without spending an hour on each one.</p></details>
+      <details><summary>What counts as one answer?</summary><p>Each time you click Write it and get a result. Asking again for a different version uses another answer. If something goes wrong on our side, the answer isn't counted.</p></details>
+      <details><summary>Will the messages sound like a robot?</summary><p>They're written to sound like a person: short, specific and about the buyer's problem. Always read and adjust before sending, especially names and numbers. The AI won't invent facts; it leaves [placeholders] for you to fill.</p></details>
+      <details><summary>Do you store what I type?</summary><p>No. Your text is sent to the AI to write your answer and isn't saved on our servers. We only store your email, your plan and how many answers you've used. Your "About you" details stay in your own browser.</p></details>
+      <details><summary>How do I cancel?</summary><p>Sign in, then click "Cancel renewal" next to your plan. You keep your answers until the end of the month you paid for.</p></details>
+      <details><summary>Can Meetbound do the outreach for me?</summary><p>Yes. If you'd rather have qualified meetings booked into your calendar, see our <a href="/">done-for-you outbound service</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="/" style="font-size:18px;color:var(--on-ink)"><span class="mark" aria-hidden="true"></span>Meetbound</a>
+    <nav aria-label="Policies"><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/refunds">Cancellations &amp; refunds</a><a href="/contact">Contact</a></nav>
+    <span>© 2026 Meetbound · Bengaluru, India</span>
+  </div>
+</footer>
+
+<dialog id="signDlg" aria-labelledby="signTitle">
+  <button class="x" type="button" id="signClose" aria-label="Close">×</button>
+  <form class="dlg" id="signForm" novalidate>
+    <h3 id="signTitle">Sign in to Meetbound AI</h3>
+    <p id="signWhy">Enter your email and we'll send you a sign-in link. No password needed. New accounts get 3 free answers.</p>
+    <label for="signEmail">Email<input id="signEmail" type="email" autocomplete="email" placeholder="you@company.com"></label>
+    <p class="status err" id="signErr" role="alert"></p>
+    <button class="btn solid" type="submit" id="signGo">Send sign-in link</button>
+  </form>
+  <div class="dlg" id="signSent" hidden>
+    <h3>Check your email</h3>
+    <p>We sent a sign-in link to <b id="sentTo"></b>. Open it on this device and you'll come straight back here, signed in. Check spam if it doesn't arrive within a minute.</p>
+    <button class="btn" type="button" id="signAgain" style="color:var(--text)">Use a different email</button>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+
+/* ---------- tools ---------- */
+const TOOLS=[
+ {id:"cold_call",icon:"☎",label:"Cold call script",title:"Cold call script",
+  intro:"A full script: opener, discovery questions, objection replies, the ask and a voicemail.",
+  needsProduct:true,
+  fields:[
+   {k:"prospect",label:"Who are you calling?",req:true,ph:"e.g. CFO of a mid-size auto parts manufacturer in Pune"},
+   {k:"goal",label:"Goal of the call",type:"select",opts:["Book a 20-30 minute discovery meeting","Qualify if they have the problem","Get referred to the right person","Re-engage a lead that went quiet"]},
+   {k:"notes",label:"Anything you know about them",hint:"(optional)",area:true,ph:"e.g. They just opened a new plant; hiring 3 accountants on LinkedIn"}
+  ],
+  example:"## Opener\nHi Rajesh, this is Priya from LedgerFlow. I know I'm calling out of the blue. Can I take 30 seconds to tell you why, and you can tell me if it's worth continuing?\n\n## Reason for calling\nI work with finance heads at manufacturers who are processing thousands of supplier invoices by hand. Most tell me month-end close drags on and duplicate payments slip through.\n\n## Discovery questions\n- How are supplier invoices entered into your system today?\n- How many days does month-end close take right now?\n- What happens when an invoice doesn't match the PO?\n- If you could fix one thing in accounts payable this year, what would it be?\n\n## Objection handling\n- **\"We're happy with our process.\"** Good to hear. Out of curiosity, how long does close take today?\n- **\"Send me an email.\"** Happy to. So it's relevant, what's the bigger headache: speed or errors?\n- **\"No budget.\"** Understood. Would it help to see the cost of the current process first, so it's ready for next year's budget?\n- **\"We already use a tool.\"** Makes sense. Is it handling scanned invoices well, or still a lot of manual checks?\n\n## Ask for the meeting\nWould 20 minutes on Thursday at 11 or Friday at 3 work to see if this could cut your close time?\n\n## Voicemail\nHi Rajesh, Priya from LedgerFlow. I help finance teams at manufacturers cut invoice processing time. I'll send a short email today; it's worth a look if month-end close is a pain. Thanks."},
+ {id:"new_email",icon:"✉",label:"New email",title:"New sales email",
+  intro:"A short cold email with three subject lines, built around one problem your buyer cares about.",
+  needsProduct:true,
+  fields:[
+   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. Head of Operations at a logistics company in Mumbai"},
+   {k:"angle",label:"Why reach out now?",hint:"(optional)",ph:"e.g. They're hiring 5 data entry staff; just opened 3 new hubs"},
+   {k:"step",label:"Which email?",type:"select",opts:["First email","Follow-up 1 (no reply)","Follow-up 2 (no reply)","Break-up email (last one)"]},
+   {k:"tone",label:"Tone",type:"select",opts:["Friendly and professional","Short and direct","Warm and conversational","Formal"]}
+  ],
+  example:"## Subject lines\n- 3 new hubs, same back office?\n- e-way bills at SwiftLane\n- quick question, Meera\n\n## Email\nHi Meera,\n\nCongrats on the three new hubs. When volume grows that fast, the paperwork usually grows faster: e-way bills, invoices and data copied between the TMS and the GST portal.\n\nWe help logistics teams automate that work, so trucks don't wait at checkpoints for documents and the back office doesn't need to grow with every new hub.\n\nIs shipment paperwork slowing your team down at all, or is it under control?\n\nPriya\nLedgerFlow\n\n## Why this works\n- Opens with their news, not your product.\n- Ends with an easy question instead of asking for 30 minutes."},
+ {id:"email_reply",icon:"↩",label:"Reply to email",title:"Reply to an email",
+  intro:"Paste the email you got. Get a reply that answers them, handles any objection, and moves things forward.",
+  needsProduct:false,
+  fields:[
+   {k:"received",label:"Paste the email you received",req:true,area:true,rows:6,ph:"e.g. Thanks for reaching out. We're not looking at new tools this quarter, maybe reconnect next year."},
+   {k:"intent",label:"What do you want from this reply?",type:"select",opts:["Move to a short call","Handle their objection","Answer their question","Keep the door open politely","Close the conversation politely"]},
+   {k:"notes",label:"Extra context",hint:"(optional)",ph:"e.g. We spoke at a conference last month"}
+  ],
+  example:"## Reply\nHi Arjun,\n\nThanks for the honest reply. Timing matters, and I won't push.\n\nOne thought: most teams we work with start planning next year's tools around now. If it helps, I can send a one-page summary of what invoice automation costs and saves for a team your size, so it's ready when budgets open.\n\nWould that be useful, or should I check back in January?\n\nPriya\n\n## Shorter version\nUnderstood, Arjun. Want a one-page cost and savings summary for your budget planning, or shall I check back in January?"},
+ {id:"linkedin",icon:"in",label:"LinkedIn message",title:"LinkedIn message",
+  intro:"Connection notes, first messages and follow-ups that sound like a person, not a pitch.",
+  needsProduct:false,
+  fields:[
+   {k:"type",label:"Type of message",type:"select",opts:["Connection request note (under 300 characters)","First message after they accept","Follow-up (no reply)","Comment on their post"]},
+   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. VP Finance at a pharma company in Hyderabad"},
+   {k:"context",label:"What do you know about them?",hint:"(optional)",area:true,ph:"e.g. Posted last week about closing the books faster"}
+  ],
+  example:"## Version 1\nHi Ananya, your post on closing the books in 5 days was spot on, especially the part about invoice matching. I work with finance teams on the same problem. Would be good to connect.\n\n## Version 2\nHi Ananya, I follow finance leaders working on faster month-end close, and your recent post stood out. Would love to connect and learn how your team approaches it.\n\n## Follow-up if they accept but don't reply\nThanks for connecting, Ananya. Curious: is invoice entry still the slowest part of close for your team, or have you solved that one?"},
+ {id:"coach",icon:"?",label:"Ask a sales coach",title:"Ask a sales coach",
+  intro:"Any sales question: handling an objection, pricing, follow-ups, what to say next. Get a straight, practical answer.",
+  needsProduct:false,
+  fields:[
+   {k:"question",label:"Your question",req:true,area:true,rows:4,ph:"e.g. A prospect said our price is too high compared to a competitor. How should I respond?"},
+   {k:"notes",label:"Context",hint:"(optional)",ph:"e.g. Deal is ₹6 lakh a year; they liked the demo"}
+  ],
+  example:"Don't defend the price yet. First find out what they're comparing, because \"too high\" usually means the value isn't clear, not that the number is wrong.\n\n## What to say\n\"That's fair to raise. When you compare us, which parts of their offer are you comparing line by line?\"\n\n## Then\n- Separate price from cost: show what the problem costs them today (time, errors, missed revenue).\n- Compare like for like. If the competitor leaves out setup, support or integrations, say so calmly.\n- If they still need a lower number, trade, don't discount: a longer contract, smaller first phase or a case study in return.\n\n## Avoid\nOffering a discount in the same conversation. It tells them your first price wasn't real."}
+];
+
+let tool=TOOLS[0];
+const draft=store.get("mbai-draft",{});
+const ME_KEYS=["product","buyer","me","proof"];
+
+function renderTabs(){
+  $("tabs").replaceChildren(...TOOLS.map(t=>{
+    const b=el("button","tab");b.type="button";b.role="tab";b.id="tab-"+t.id;b.setAttribute("aria-selected",String(t===tool));
+    b.append(el("span","ic",t.icon),document.createTextNode(t.label));
+    b.onclick=()=>{tool=t;store.set("mbai-tool",t.id);renderTabs();renderTool()};
+    return b}));
+}
+function renderTool(){
+  $("toolIntro").textContent=tool.intro;
+  $("reqProduct").hidden=!tool.needsProduct;
+  $("fields").replaceChildren(...tool.fields.map(f=>{
+    const id="t_"+tool.id+"_"+f.k,l=el("label");l.htmlFor=id;
+    const lh=el("span","lh");lh.append(document.createTextNode(f.label+" "));
+    if(f.req)lh.append(el("span","req","*"));
+    if(f.hint)lh.append(el("small",null," "+f.hint));
+    l.append(lh);
+    let inp;
+    if(f.type==="select"){inp=el("select");f.opts.forEach(o=>inp.append(new Option(o,o)))}
+    else if(f.area){inp=el("textarea");inp.rows=f.rows||3}
+    else inp=el("input");
+    inp.id=id;if(f.ph)inp.placeholder=f.ph;
+    const saved=draft[tool.id]&&draft[tool.id][f.k];if(saved!=null)inp.value=saved;
+    inp.addEventListener("input",()=>{draft[tool.id]=draft[tool.id]||{};draft[tool.id][f.k]=inp.value;store.set("mbai-draft",draft)});
+    l.append(inp);return l}));
+  $("formErr").textContent="";
+  showOutput(tool.example,true);
+}
+ME_KEYS.forEach(k=>{const i=$("f_"+k);i.value=(draft.me&&draft.me[k])||"";i.addEventListener("input",()=>{draft.me=draft.me||{};draft.me[k]=i.value;store.set("mbai-draft",draft);meSummary()})});
+function meSummary(){const p=$("f_product").value.trim();$("meSum").textContent=p?p:"Add what you sell, so every answer fits"}
+meSummary();
+if(!$("f_product").value.trim())$("meBox").open=true;
+
+/* ---------- output ---------- */
+function plain(s){return s.replace(/^##\s+/gm,"").replace(/\*\*(.+?)\*\*/g,"$1").trim()}
+function inline(parent,text){
+  text.split(/(\*\*[^*]+\*\*)/g).forEach(part=>{
+    if(/^\*\*[^*]+\*\*$/.test(part))parent.append(el("strong",null,part.slice(2,-2)));
+    else if(part)parent.append(document.createTextNode(part));
+  });
+}
+function copyBtn(getText,label){
+  label=label||"Copy";const b=el("button","copy",label);b.type="button";
+  b.onclick=async()=>{const t=getText();
+    try{await navigator.clipboard.writeText(t);b.textContent="Copied ✓"}
+    catch{const ta=el("textarea");ta.value=t;document.body.append(ta);ta.select();try{document.execCommand("copy");b.textContent="Copied ✓"}catch{b.textContent="Select & copy"}ta.remove()}
+    setTimeout(()=>b.textContent=label,1600)};
+  return b;
+}
+function renderBody(container,body){
+  const lines=body.split("\n");let para=[],list=null;
+  const flushP=()=>{if(para.length){const p=el("p");inline(p,para.join("\n"));container.append(p);para=[]}};
+  lines.forEach(line=>{
+    const m=line.match(/^\s*[-•]\s+(.*)$/);
+    if(m){flushP();if(!list){list=el("ul");container.append(list)}const li=el("li");inline(li,m[1]);list.append(li)}
+    else if(!line.trim()){flushP();list=null}
+    else{list=null;para.push(line)}
+  });flushP();
+}
+function showOutput(text,isExample){
+  $("outTitle").textContent=tool.title;
+  $("outTag").textContent=isExample?"Example answer":"Your answer";
+  $("outTag").className="tag "+(isExample?"ex":"yours");
+  const out=$("out");out.replaceChildren();
+  const parts=text.split(/^##\s+/m);const pre=parts.shift();
+  if(pre.trim()){const s=el("div","sec");const h=el("div","sec-h");h.append(el("span"),copyBtn(()=>plain(pre)));s.append(h);renderBody(s,pre.trim());out.append(s)}
+  parts.forEach(p=>{
+    const nl=p.indexOf("\n"),head=(nl<0?p:p.slice(0,nl)).trim(),body=(nl<0?"":p.slice(nl+1)).trim();
+    const s=el("div","sec"),h=el("div","sec-h");h.append(el("h4",null,head),copyBtn(()=>plain(body)));s.append(h);renderBody(s,body);out.append(s);
+  });
+  if(!isExample){const row=el("div","go-row");row.append(copyBtn(()=>plain(text),"Copy everything"));out.append(row)}
+}
+function showThinking(){const out=$("out");out.replaceChildren();const t=el("div","thinking");const d=el("span","dots");d.append(el("i"),el("i"),el("i"));t.append(d,document.createTextNode("Writing your "+tool.title.toLowerCase()+"…"));out.append(t);$("outTag").textContent="Writing";$("outTag").className="tag yours"}
+function showUpsell(){
+  const out=$("out");out.replaceChildren();const u=el("div","upsell");
+  u.append(el("h3",null,"You've used all your answers"),el("p",null,"Pick a plan to keep writing. Plans start at ₹199 a month for 50 answers, and you can cancel anytime."));
+  const a=el("a","btn solid","See plans");a.href="#pricing";u.append(a);out.append(u);
+}
+
+/* ---------- config, auth, account ---------- */
+let cfg=null,sb=null,session=null,status=null;
+async function token(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.access_token:null}
+async function api(path,opts={}){
+  const t=await token();const h={"content-type":"application/json"};if(t)h.authorization="Bearer "+t;
+  const r=await fetch(path,{method:opts.method||"GET",headers:h,body:opts.body?JSON.stringify(opts.body):undefined});
+  const d=await r.json().catch(()=>({code:"server_error",message:"Something went wrong. Try again."}));
+  return{ok:r.ok,status:r.status,data:d};
+}
+async function init(){
+  try{const r=await fetch("/api/config");cfg=await r.json()}catch{cfg=null}
+  const live=cfg&&cfg.ready&&cfg.ready.auth&&cfg.ready.ai;
+  $("soon").hidden=!!live;
+  if(!live){$("go").textContent="Opening soon";$("goNote").textContent="Explore the examples for now";}
+  if(!(cfg&&cfg.ready&&cfg.ready.payments))document.querySelectorAll(".sub").forEach(b=>{b.textContent="Opening soon";b.disabled=true});
+  if(cfg&&cfg.ready&&cfg.ready.auth&&window.supabase){
+    sb=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey,{auth:{persistSession:true,detectSessionInUrl:true}});
+    sb.auth.onAuthStateChange((_e,s)=>{session=s;refreshMe()});
+    const{data}=await sb.auth.getSession();session=data.session;refreshMe();
+  }
+}
+async function refreshMe(){
+  if(!session){status=null;renderAcct();return}
+  const r=await api("/api/me");if(r.ok){status=r.data;renderAcct()}
+}
+const PLAN_NAME={free:"Free",p199:"Starter",p299:"Pro",p399:"Power"};
+function renderAcct(){
+  const who=$("who"),act=$("acctActions");
+  document.querySelectorAll(".plan").forEach(p=>p.classList.toggle("current",!!status&&status.active&&p.dataset.plan===status.plan));
+  if(!session){
+    who.replaceChildren(el("span","badge","Free"),el("span",null,"Try 3 answers free. Sign in with your email to start."));
+    act.replaceChildren(signButton());$("meter").hidden=true;$("navSign").textContent="Sign in";$("navSign").onclick=()=>openSign();return;
+  }
+  $("navSign").textContent="Sign out";$("navSign").onclick=signOut;
+  const email=(session.user&&session.user.email)||"";
+  who.replaceChildren(el("span","badge",PLAN_NAME[status?status.plan:"free"]||"Free"),el("b",null,email));
+  act.replaceChildren();
+  if(status){
+    let txt,used,total;
+    if(status.active){total=status.limit;used=status.used;txt=status.plan_left+" of "+status.limit+" answers left this month"+(status.free_left?" + "+status.free_left+" free":"");}
+    else{total=3;used=3-status.free_left;txt=status.free_left+" of 3 free answers left";}
+    $("meterTxt").textContent=txt;$("meterBar").style.width=Math.max(0,Math.min(100,(total-used)/total*100))+"%";$("meter").hidden=false;
+    if(status.active){
+      const end=status.period_end?new Date(status.period_end).toLocaleDateString("en-IN",{day:"numeric",month:"short"}):"";
+      if(status.renewing){act.append(el("span","status","Renews "+end));const c=el("button","linkbtn","Cancel renewal");c.type="button";c.onclick=cancelRenewal;act.append(c)}
+      else act.append(el("span","status","Ends "+end));
+    }else if(!status.free_left){const a=el("a","btn small solid","Upgrade");a.href="#pricing";act.append(a)}
+  }
+  const so=el("button","linkbtn","Sign out");so.type="button";so.onclick=signOut;act.append(so);
+}
+function signButton(){const b=el("button","btn small","Sign in");b.type="button";b.style.color="var(--text)";b.onclick=()=>openSign();return b}
+async function signOut(){if(sb)await sb.auth.signOut();session=null;status=null;renderAcct()}
+
+/* sign-in dialog */
+const dlg=$("signDlg");
+function openSign(why){
+  if(!sb){$("formErr").textContent="Sign-in opens soon. Explore the examples for now.";return}
+  $("signWhy").textContent=why||"Enter your email and we'll send you a sign-in link. No password needed. New accounts get 3 free answers.";
+  $("signForm").hidden=false;$("signSent").hidden=true;$("signErr").textContent="";
+  if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");
+  setTimeout(()=>$("signEmail").focus(),50);
+}
+$("signClose").onclick=()=>dlg.close();
+$("signAgain").onclick=()=>{$("signForm").hidden=false;$("signSent").hidden=true};
+$("signForm").addEventListener("submit",async e=>{
+  e.preventDefault();const email=$("signEmail").value.trim();
+  if(!/^\S+@\S+\.\S+$/.test(email)){$("signErr").textContent="Enter a valid email, like you@company.com.";return}
+  $("signGo").disabled=true;$("signErr").textContent="";
+  const{error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname+"#tools"}});
+  $("signGo").disabled=false;
+  if(error){$("signErr").textContent=/rate|seconds/i.test(error.message)?"Please wait a minute before asking for another link.":"Couldn't send the link. Check the email and try again.";return}
+  $("sentTo").textContent=email;$("signForm").hidden=true;$("signSent").hidden=false;
+});
+
+/* ---------- generate ---------- */
+$("toolForm").addEventListener("submit",async e=>{
+  e.preventDefault();$("formErr").textContent="";
+  const inputs={};ME_KEYS.forEach(k=>inputs[k]=$("f_"+k).value.trim());
+  tool.fields.forEach(f=>inputs[f.k]=$("t_"+tool.id+"_"+f.k).value.trim());
+  const missing=tool.fields.filter(f=>f.req&&!inputs[f.k]).map(f=>f.label);
+  if(tool.needsProduct&&!inputs.product){$("meBox").open=true;missing.unshift("What you sell")}
+  if(missing.length){$("formErr").textContent="Please fill in: "+missing.join(", ")+".";return}
+  if(!(cfg&&cfg.ready&&cfg.ready.auth&&cfg.ready.ai)){$("formErr").textContent="Meetbound AI is opening soon. Explore the examples for now.";return}
+  if(!session){openSign("Sign in to use your 3 free answers. We'll email you a link; your details here are saved.");return}
+  $("go").disabled=true;showThinking();
+  const r=await api("/api/generate",{method:"POST",body:{tool:tool.id,inputs}});
+  $("go").disabled=false;
+  if(r.ok){showOutput(r.data.text,false);status=r.data.status||status;renderAcct();if(innerWidth<960)$("out").scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(r.data.code==="no_credits"){status=r.data.status||status;renderAcct();showUpsell();return}
+  if(r.data.code==="signed_out"){session=null;renderAcct();openSign();showOutput(tool.example,true);return}
+  showOutput(tool.example,true);$("formErr").textContent=r.data.message||"Something went wrong. Try again.";
+});
+
+/* ---------- payments ---------- */
+function loadRazorpay(){return new Promise((ok,no)=>{if(window.Razorpay)return ok();const s=document.createElement("script");s.src="https://checkout.razorpay.com/v1/checkout.js";s.onload=ok;s.onerror=no;document.head.append(s)})}
+document.querySelectorAll(".sub").forEach(b=>b.addEventListener("click",async()=>{
+  const plan=b.dataset.plan;$("payMsg").textContent="";$("payMsg").classList.remove("err");
+  if(!session){openSign("Sign in first, then choose your plan. We'll email you a sign-in link.");return}
+  b.disabled=true;const label=b.textContent;b.textContent="Opening payment…";
+  try{
+    const r=await api("/api/subscribe",{method:"POST",body:{plan}});
+    if(!r.ok)throw new Error(r.data.message||"Couldn't start the payment.");
+    await loadRazorpay();
+    const rzp=new window.Razorpay({
+      key:r.data.keyId,subscription_id:r.data.subscriptionId,name:"Meetbound AI",
+      description:(cfg.plans[plan].name)+" plan · ₹"+cfg.plans[plan].price+"/month",
+      prefill:{email:r.data.email},theme:{color:"#0FA88A"},
+      handler:async resp=>{
+        $("payMsg").textContent="Payment received. Switching your plan on…";
+        const v=await api("/api/verify-payment",{method:"POST",body:resp});
+        if(v.ok){status=v.data.status;renderAcct();$("payMsg").textContent="You're on the "+cfg.plans[plan].name+" plan. Happy selling!";location.hash="tools"}
+        else{$("payMsg").textContent=v.data.message;$("payMsg").classList.add("err")}
+      },
+      modal:{ondismiss:()=>{$("payMsg").textContent="Payment cancelled. You haven't been charged."}}
+    });
+    rzp.open();
+  }catch(err){$("payMsg").textContent=err.message||"Couldn't open the payment window. Try again.";$("payMsg").classList.add("err")}
+  finally{b.disabled=false;b.textContent=label}
+}));
+async function cancelRenewal(){
+  if(!confirm("Stop your plan renewing? You keep your answers until the end of this month."))return;
+  const r=await api("/api/cancel",{method:"POST"});
+  if(r.ok){status=r.data.status;renderAcct()}else alert(r.data.message||"Couldn't cancel. Email meetboundsales@gmail.com and we'll do it.");
+}
+
+/* ---------- start ---------- */
+const savedTool=TOOLS.find(t=>t.id===store.get("mbai-tool",""));if(savedTool)tool=savedTool;
+renderTabs();renderTool();renderAcct();init();
+})();
+</script>
+</body>
+</html>
