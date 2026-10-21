@@ -219,11 +219,24 @@ tbody th{font:600 14px var(--body);color:var(--muted);width:22%}
 .guarantee b{font:700 17px var(--display);display:block}
 
 /* diy promo */
-.diy{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;background:var(--ink);color:var(--on-ink);border-radius:24px;padding:34px}
-.diy>div{display:grid;gap:10px;max-width:640px}
+.diy{background:var(--ink);color:var(--on-ink);border-radius:24px;padding:34px;display:grid;gap:26px}
 .diy .label{color:var(--accent)}
+.diy-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end}
+.diy-top>div{display:grid;gap:10px}
 .diy h2{font-size:clamp(26px,3.2vw,36px)}
-.diy p{color:var(--on-ink-mut)}
+.diy-top p{color:var(--on-ink-mut);font-size:17px}
+.diy-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.tool{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start}
+.tool .ti{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(15,168,138,.18);color:#7FE3C9;font:700 15px var(--display)}
+.tool h3{font-size:17px}
+.tool p{font-size:14px;color:var(--on-ink-mut);line-height:1.5}
+.diy-foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:22px}
+.prices{display:flex;gap:10px;flex-wrap:wrap}
+.prices span{font-size:14px;color:var(--on-ink-mut);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 14px}
+.prices b{color:var(--on-ink);font-family:var(--display);margin-right:4px}
+@media (max-width:1000px){.diy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.diy-top{grid-template-columns:minmax(0,1fr);gap:12px}}
+@media (max-width:640px){.diy{padding:24px}.diy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:340px){.diy-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* calc */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px}
@@ -523,12 +536,24 @@ footer .brand{font-size:18px;color:var(--on-ink)}
 <section style="padding-block:0 96px">
   <div class="wrap">
     <div class="diy reveal">
-      <div>
-        <span class="label">Prefer to do your own outreach?</span>
-        <h2>Meetbound AI writes it with you, from ₹199 a month.</h2>
-        <p>Cold call scripts, sales emails, email replies and LinkedIn messages written for your product and buyer in seconds. Plus a sales coach for any question. Try 3 answers free.</p>
+      <div class="diy-top">
+        <div>
+          <span class="label">Prefer to do your own outreach?</span>
+          <h2>Meetbound AI writes it with you, from ₹199 a month.</h2>
+        </div>
+        <p>Written for your product and your buyer in seconds. Try 3 answers free.</p>
       </div>
-      <a class="btn solid" href="/ai">Try Meetbound AI free <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div class="diy-grid">
+        <div class="tool"><span class="ti">☎</span><h3>Cold call scripts</h3><p>Opener, questions, objection replies and voicemail.</p></div>
+        <div class="tool"><span class="ti">✉</span><h3>Sales emails</h3><p>Three subject lines and a short email that gets replies.</p></div>
+        <div class="tool"><span class="ti">↩</span><h3>Email replies</h3><p>Paste what they wrote and get the right reply.</p></div>
+        <div class="tool"><span class="ti">in</span><h3>LinkedIn messages</h3><p>Connection notes and follow-ups that sound human.</p></div>
+        <div class="tool"><span class="ti">?</span><h3>Sales coach</h3><p>A straight answer to any sales question.</p></div>
+      </div>
+      <div class="diy-foot">
+        <div class="prices"><span><b>Free</b> 3 answers</span><span><b>₹199</b> 50 / month</span><span><b>₹299</b> 150 / month</span><span><b>₹399</b> 400 / month</span></div>
+        <a class="btn solid" href="/ai">Try Meetbound AI free <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
