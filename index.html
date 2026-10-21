@@ -234,9 +234,9 @@ tbody th{font:600 14px var(--body);color:var(--muted);width:22%}
 .prices{display:flex;gap:10px;flex-wrap:wrap}
 .prices span{font-size:14px;color:var(--on-ink-mut);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 14px}
 .prices b{color:var(--on-ink);font-family:var(--display);margin-right:4px}
-@media (max-width:1000px){.diy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.diy-top{grid-template-columns:minmax(0,1fr);gap:12px}}
+@media (max-width:1000px){.tool:last-child{grid-column:span 2}.diy-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.diy-top{grid-template-columns:minmax(0,1fr);gap:12px}}
 @media (max-width:640px){.diy{padding:24px}.diy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:340px){.diy-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:340px){.diy-grid{grid-template-columns:minmax(0,1fr)}.tool:last-child{grid-column:auto}}
 
 /* calc */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px}
