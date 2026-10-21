@@ -259,6 +259,19 @@ tbody th{font:600 14px var(--body);color:var(--muted);width:22%}
 .creds{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .creds span{font:500 12px var(--mono);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 12px;color:var(--on-ink-mut)}
 
+/* founder promise */
+.fh{font-size:clamp(28px,3.6vw,42px);margin:14px 0 18px}
+.founder blockquote{color:var(--on-ink-mut);font:400 clamp(17px,1.6vw,19px)/1.65 var(--body);letter-spacing:0;border-left:3px solid var(--accent);padding-left:18px}
+.promise{margin-top:44px;max-width:1060px;border-top:1px solid rgba(255,255,255,.1);padding-top:34px}
+.promise h3{font-size:22px;margin-bottom:18px}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pgrid div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px;display:grid;gap:6px;align-content:start}
+.pgrid b{font:700 16.5px var(--display);color:var(--on-ink);padding-left:26px;position:relative}
+.pgrid b::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%2303130E' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.pgrid p{font-size:14.5px;color:var(--on-ink-mut);line-height:1.5}
+@media (max-width:960px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.pgrid{grid-template-columns:minmax(0,1fr)}}
+
 /* faq */
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
 details{border-bottom:1px solid var(--line);padding-block:18px}
@@ -584,9 +597,19 @@ footer .brand{font-size:18px;color:var(--on-ink)}
       <div class="avatar" aria-hidden="true">JA</div>
       <div>
         <span class="label">Why I started Meetbound</span>
-        <blockquote style="margin-top:16px">I spent my career selling RPA, process mining and AI solutions to businesses. I know how these buyers think, what they push back on, and what gets them to a first call. Now I do that for startups with a great product and no time to find customers.</blockquote>
+        <h2 class="fh">I've sat across the table from the buyers you need to reach.</h2>
+        <blockquote>My career was spent selling RPA, process mining and AI to CIOs, CFOs and COOs. I learned what makes a senior buyer ignore a message, and what makes them say "let's talk". Most early-stage B2B startups don't have a product problem. They have a conversation problem: great software, and nobody starting the right conversations with the right people. Meetbound exists to start those conversations for you, with the same care I'd give my own pipeline.</blockquote>
         <cite><b>Juliet Arambam</b>, Founder · <a href="https://linkedin.com/in/juliet-arambam1" target="_blank" rel="noopener">LinkedIn</a></cite>
-        <div class="creds"><span>B2B tech sales</span><span>RPA &amp; process automation</span><span>AI solutions</span><span>MBA</span><span>Bengaluru</span></div>
+        <div class="creds"><span>B2B tech sales</span><span>RPA &amp; process automation</span><span>Process mining</span><span>AI solutions</span><span>MBA</span><span>Bengaluru</span></div>
+      </div>
+    </div>
+    <div class="promise reveal">
+      <h3>My promise to every startup I work with</h3>
+      <div class="pgrid">
+        <div><b>I run your campaign myself</b><p>You work directly with me, not a junior team you've never met.</p></div>
+        <div><b>Nothing goes out without your OK</b><p>You approve every message before it's sent in your name.</p></div>
+        <div><b>You see every number</b><p>A clear report every Friday: who we reached, who replied, what's booked.</p></div>
+        <div><b>Results, or I keep working</b><p>6 qualified meetings in the pilot, or another month at no charge.</p></div>
       </div>
     </div>
   </div>
