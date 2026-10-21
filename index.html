@@ -130,6 +130,39 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .get h3{font-size:19px}
 .get p{color:var(--on-ink-mut);font-size:15px}
 
+/* qualification */
+.qual{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.chk{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:12px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
+.chk b{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font:700 18px var(--display)}
+.chk.pre b{background:var(--accent-soft);color:var(--accent-deep)}
+.chk.call b{background:#FFF1D6;color:#8A5A00}
+.chk h3{font-size:15.5px;letter-spacing:-.01em}
+.chk p{font-size:13.5px;color:var(--muted);line-height:1.45}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.brief{background:var(--ink);color:var(--on-ink);border-radius:22px;padding:22px;box-shadow:0 30px 70px rgba(7,20,15,.25);min-width:0;display:grid;gap:16px}
+.brief-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brief-h b{font:600 17px var(--display)}
+.brief-h span{font:500 11px var(--mono);color:var(--on-ink-mut);letter-spacing:.08em}
+.who{display:grid;gap:2px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1)}
+.who b{font:700 20px var(--display)}
+.who span{font-size:14px;color:var(--on-ink-mut)}
+.letters{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px}
+.letters span{text-align:center;padding:7px 0;border-radius:8px;font:700 16px var(--display)}
+.letters .k{background:rgba(15,168,138,.18);color:#7FE3C9}
+.letters .a{background:rgba(245,184,65,.16);color:var(--gold)}
+.facts{display:grid;gap:8px}
+.fact{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:14px;align-items:start}
+.fact i{font:700 12px var(--mono);font-style:normal;width:24px;height:24px;border-radius:7px;display:grid;place-items:center}
+.fact.k i{background:rgba(15,168,138,.18);color:#7FE3C9}
+.fact.a i{background:rgba(245,184,65,.16);color:var(--gold)}
+.fact small{display:block;color:var(--on-ink-mut);font-size:12.5px}
+.brief-f{font-size:12.5px;color:var(--on-ink-mut);border-top:1px solid rgba(255,255,255,.1);padding-top:12px}
+@media (max-width:960px){.qual{grid-template-columns:1fr;gap:40px}}
+@media (max-width:560px){.checks{grid-template-columns:1fr}.letters span{font-size:14px}}
+
 /* compare */
 .tablewrap{overflow-x:auto;border-radius:20px;border:1px solid var(--line);background:var(--surface)}
 table{width:100%;border-collapse:collapse;min-width:640px}
@@ -264,6 +297,7 @@ footer .brand{font-size:18px;color:var(--on-ink)}
     <a class="brand" href="#top" aria-label="Meetbound home"><span class="mark" aria-hidden="true"></span>Meetbound</a>
     <div class="links">
       <a href="#how">How it works</a>
+      <a href="#qualify">How we qualify</a>
       <a href="#compare">Why us</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -351,6 +385,41 @@ footer .brand{font-size:18px;color:var(--on-ink)}
       <div class="get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l7-8v5c6 0 11 2 11 11-2-5-5-6-11-6v5z"/></svg><h3>Daily outreach</h3><p>LinkedIn and email, run every working day, with replies handled within hours.</p></div>
       <div class="get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><h3>Booked meetings</h3><p>Qualified calls in your calendar, each with a short brief on the prospect.</p></div>
       <div class="get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><h3>Weekly report</h3><p>Contacts reached, reply rate, meetings booked, and what we're changing next.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="qualify" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap qual">
+    <div class="reveal">
+      <span class="label">How we qualify</span>
+      <h2 style="font-size:clamp(32px,4.4vw,50px);margin-top:14px">Every meeting arrives qualified, with a brief.</h2>
+      <p style="color:var(--muted);font-size:18px;margin-top:16px">We use MEDDICC, the checklist enterprise sales teams use to tell real deals from polite interest. Before a meeting reaches your calendar, we confirm the basics. The brief then tells you exactly what's still open, so your first call is a real discovery call, not a guessing game.</p>
+      <div class="checks">
+        <div class="chk pre"><b>I</b><div><h3>Identify pain</h3><p>A specific problem your product solves.</p></div></div>
+        <div class="chk pre"><b>E</b><div><h3>Economic buyer</h3><p>The budget owner, or someone who reports to them.</p></div></div>
+        <div class="chk pre"><b>M</b><div><h3>Metrics</h3><p>What the problem costs them, if they'll share it.</p></div></div>
+        <div class="chk pre"><b>C</b><div><h3>Competition</h3><p>What they use today, or who else they're talking to.</p></div></div>
+        <div class="chk call"><b>D</b><div><h3>Decision criteria</h3><p>How they'll choose a vendor.</p></div></div>
+        <div class="chk call"><b>D</b><div><h3>Decision process</h3><p>Steps, people and timeline to a decision.</p></div></div>
+        <div class="chk call"><b>P</b><div><h3>Paper process</h3><p>Procurement, legal and security steps.</p></div></div>
+        <div class="chk call"><b>C</b><div><h3>Champion</h3><p>The insider who'll push for you.</p></div></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Checked before we book</span><span><i style="background:var(--gold)"></i>Flagged for you to ask on the call</span></div>
+    </div>
+
+    <div class="brief reveal" aria-label="Sample meeting brief">
+      <div class="brief-h"><b>Meeting brief</b><span>SAMPLE · FICTIONAL PROSPECT</span></div>
+      <div class="who"><b>Head of Finance Ops · Retail, Bengaluru</b><span>Thu 11:00 · 30 min · Google Meet</span></div>
+      <div class="letters" aria-label="MEDDICC status: M, E, I and the second C confirmed; both D's, P and Champion to ask"><span class="k">M</span><span class="k">E</span><span class="a">D</span><span class="a">D</span><span class="a">P</span><span class="k">I</span><span class="a">C</span><span class="k">C</span></div>
+      <div class="facts">
+        <div class="fact k"><i>I</i><p>Pain: 3,000 invoices a month keyed in by hand; month-end close takes 10 days.<small>Said in her reply to our second message</small></p></div>
+        <div class="fact k"><i>M</i><p>Cost: two duplicate payments last year, about ₹9 lakh.</p></div>
+        <div class="fact k"><i>E</i><p>Budget sits with the CFO; she runs the evaluation.</p></div>
+        <div class="fact k"><i>C</i><p>Looked at one other vendor; also considering hiring two more clerks.</p></div>
+        <div class="fact a"><i>?</i><p>Ask on the call: how will they choose, who signs off, and how long does procurement take?</p></div>
+      </div>
+      <div class="brief-f">4 of 8 MEDDICC checks confirmed before the call · Delivered with every booked meeting</div>
     </div>
   </div>
 </section>
@@ -481,7 +550,7 @@ footer .brand{font-size:18px;color:var(--on-ink)}
   <div class="wrap faq">
     <div class="shead reveal" style="margin:0"><span class="label">FAQ</span><h2>Questions founders ask</h2><p>Anything else? Ask on the call.</p></div>
     <div>
-      <details open><summary>What counts as a qualified meeting?</summary><p>A call that actually happens with a decision-maker or strong influencer at a company that fits your ideal customer profile, who has agreed to talk about your product. No-shows and wrong-fit calls don't count toward the target.</p></details>
+      <details open><summary>What counts as a qualified meeting?</summary><p>A call that actually happens with a decision-maker or strong influencer at a company that fits your ideal customer profile, who has agreed to talk about your product. Before booking, we confirm a real problem, the budget owner, what the problem costs and what they use today. No-shows and wrong-fit calls don't count toward the target.</p></details>
       <details><summary>Will outreach go out in our name?</summary><p>Yes. Messages go out in your company's name, and you approve every message before outreach starts.</p></details>
       <details><summary>Which markets do you cover?</summary><p>India first, plus the US, UK, Middle East and Southeast Asia, for B2B software sold to mid-sized and enterprise companies.</p></details>
       <details><summary>Do we need to buy any tools?</summary><p>Usually not for the pilot. If a paid tool like LinkedIn Sales Navigator helps, it's billed at cost, only with your approval.</p></details>
