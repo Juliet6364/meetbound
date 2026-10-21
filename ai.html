@@ -221,12 +221,12 @@ footer a:hover{color:var(--on-ink)}
     </div>
     <div class="demo" aria-label="Example">
       <div class="demo-h"><b>Reply to an email</b><span>EXAMPLE</span></div>
-      <div class="ask"><b>They wrote:</b> “Thanks, but we already use another tool for this. Not looking to change right now.”</div>
+      <div class="ask"><b>They wrote:</b> “Thanks, but we already use another CRM. Not looking to change right now.”</div>
       <div class="ans">
         <small>Meetbound AI</small>
-        <p>Makes sense, and switching tools mid-year rarely makes sense anyway.</p>
-        <p>One quick question so I don't follow up for nothing: is month-end close still taking longer than you'd like, or has your current tool solved that?</p>
-        <p>If it's solved, I'll leave you alone. If not, happy to share what two finance teams like yours changed to get it under 5 days.</p>
+        <p>Makes sense, and switching CRMs mid-year rarely makes sense anyway.</p>
+        <p>One quick question so I don't follow up for nothing: is your team still updating deals by hand after every call, or has your current setup solved that?</p>
+        <p>If it's solved, I'll leave you alone. If not, happy to share how two sales teams like yours got that time back.</p>
       </div>
     </div>
   </div>
@@ -252,11 +252,11 @@ footer a:hover{color:var(--on-ink)}
           <details class="me" id="meBox">
             <summary>About you <span id="meSum">Add what you sell, so every answer fits</span></summary>
             <div class="inner">
-              <label for="f_product"><span class="lh">What you sell <span class="req" id="reqProduct">*</span></span><textarea id="f_product" rows="2" placeholder="e.g. AI software that reads supplier invoices and enters them into Tally and SAP"></textarea></label>
-              <label for="f_buyer">Who you sell to<input id="f_buyer" placeholder="e.g. Finance heads at Indian manufacturers, 200–2,000 staff"></label>
+              <label for="f_product"><span class="lh">What you sell <span class="req" id="reqProduct">*</span></span><textarea id="f_product" rows="2" placeholder="e.g. HR software that automates employee onboarding"></textarea></label>
+              <label for="f_buyer">Who you sell to<input id="f_buyer" placeholder="e.g. HR heads at IT services companies, 200–5,000 staff"></label>
               <div class="two">
-                <label for="f_me">Your name and company<input id="f_me" placeholder="e.g. Priya, LedgerFlow"></label>
-                <label for="f_proof"><span class="lh">Proof you can mention <small>(optional)</small></span><input id="f_proof" placeholder="e.g. cut close time 40% at 2 clients"></label>
+                <label for="f_me">Your name and company<input id="f_me" placeholder="e.g. Priya, PeopleDesk"></label>
+                <label for="f_proof"><span class="lh">Proof you can mention <small>(optional)</small></span><input id="f_proof" placeholder="e.g. cut onboarding time 50% at 3 clients"></label>
               </div>
             </div>
           </details>
@@ -371,21 +371,21 @@ const TOOLS=[
   intro:"A full script: opener, discovery questions, objection replies, the ask and a voicemail.",
   needsProduct:true,
   fields:[
-   {k:"prospect",label:"Who are you calling?",req:true,ph:"e.g. CFO of a mid-size auto parts manufacturer in Pune"},
+   {k:"prospect",label:"Who are you calling?",req:true,ph:"e.g. HR Director of an IT services company in Pune"},
    {k:"goal",label:"Goal of the call",type:"select",opts:["Book a 20-30 minute discovery meeting","Qualify if they have the problem","Get referred to the right person","Re-engage a lead that went quiet"]},
-   {k:"notes",label:"Anything you know about them",hint:"(optional)",area:true,ph:"e.g. They just opened a new plant; hiring 3 accountants on LinkedIn"}
+   {k:"notes",label:"Anything you know about them",hint:"(optional)",area:true,ph:"e.g. Hiring 200 engineers this quarter (seen on LinkedIn)"}
   ],
-  example:"## Opener\nHi Rajesh, this is Priya from LedgerFlow. I know I'm calling out of the blue. Can I take 30 seconds to tell you why, and you can tell me if it's worth continuing?\n\n## Reason for calling\nI work with finance heads at manufacturers who are processing thousands of supplier invoices by hand. Most tell me month-end close drags on and duplicate payments slip through.\n\n## Discovery questions\n- How are supplier invoices entered into your system today?\n- How many days does month-end close take right now?\n- What happens when an invoice doesn't match the PO?\n- If you could fix one thing in accounts payable this year, what would it be?\n\n## Objection handling\n- **\"We're happy with our process.\"** Good to hear. Out of curiosity, how long does close take today?\n- **\"Send me an email.\"** Happy to. So it's relevant, what's the bigger headache: speed or errors?\n- **\"No budget.\"** Understood. Would it help to see the cost of the current process first, so it's ready for next year's budget?\n- **\"We already use a tool.\"** Makes sense. Is it handling scanned invoices well, or still a lot of manual checks?\n\n## Ask for the meeting\nWould 20 minutes on Thursday at 11 or Friday at 3 work to see if this could cut your close time?\n\n## Voicemail\nHi Rajesh, Priya from LedgerFlow. I help finance teams at manufacturers cut invoice processing time. I'll send a short email today; it's worth a look if month-end close is a pain. Thanks."},
+  example:"## Opener\nHi Anjali, this is Priya from PeopleDesk. I know I'm calling out of the blue. Can I take 30 seconds to tell you why, and you can tell me if it's worth continuing?\n\n## Reason for calling\nI work with HR leaders at IT services companies who are hiring fast. Most tell me onboarding still runs on spreadsheets and email, so new joiners wait weeks for laptops, access and paperwork, and some accept other offers in the meantime.\n\n## Discovery questions\n- How does a new hire go from signed offer to their first day today?\n- How many people are you onboarding each month right now?\n- What happens when a step gets missed, like IT access or documents?\n- If you could fix one thing about onboarding this year, what would it be?\n\n## Objection handling\n- **\"We already have an HRMS.\"** Makes sense. Does it handle the onboarding steps across IT, admin and HR, or is that still tracked separately?\n- **\"Send me an email.\"** Happy to. So it's relevant, is the bigger issue speed or candidates dropping out?\n- **\"No budget right now.\"** Understood. Would it help to see what slow onboarding costs you, so it's ready for next quarter's plan?\n- **\"IT wants to build it in-house.\"** That's common. How long would they need, and who maintains it after?\n\n## Ask for the meeting\nWould 20 minutes on Thursday at 11 or Friday at 3 work to see if this could cut your offer-to-joining time?\n\n## Voicemail\nHi Anjali, Priya from PeopleDesk. I help HR teams at IT companies get new hires productive from day one. I'll send a short email today; worth a look if onboarding is slowing you down. Thanks."},
  {id:"new_email",icon:"✉",label:"New email",title:"New sales email",
   intro:"A short cold email with three subject lines, built around one problem your buyer cares about.",
   needsProduct:true,
   fields:[
-   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. Head of Operations at a logistics company in Mumbai"},
-   {k:"angle",label:"Why reach out now?",hint:"(optional)",ph:"e.g. They're hiring 5 data entry staff; just opened 3 new hubs"},
+   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. CTO at a fintech startup in Bengaluru"},
+   {k:"angle",label:"Why reach out now?",hint:"(optional)",ph:"e.g. Just raised Series B; hiring 10 engineers"},
    {k:"step",label:"Which email?",type:"select",opts:["First email","Follow-up 1 (no reply)","Follow-up 2 (no reply)","Break-up email (last one)"]},
    {k:"tone",label:"Tone",type:"select",opts:["Friendly and professional","Short and direct","Warm and conversational","Formal"]}
   ],
-  example:"## Subject lines\n- 3 new hubs, same back office?\n- e-way bills at SwiftLane\n- quick question, Meera\n\n## Email\nHi Meera,\n\nCongrats on the three new hubs. When volume grows that fast, the paperwork usually grows faster: e-way bills, invoices and data copied between the TMS and the GST portal.\n\nWe help logistics teams automate that work, so trucks don't wait at checkpoints for documents and the back office doesn't need to grow with every new hub.\n\nIs shipment paperwork slowing your team down at all, or is it under control?\n\nPriya\nLedgerFlow\n\n## Why this works\n- Opens with their news, not your product.\n- Ends with an easy question instead of asking for 30 minutes."},
+  example:"## Subject lines\n- 3 new hubs, same back office?\n- e-way bills at SwiftLane\n- quick question, Meera\n\n## Email\nHi Meera,\n\nCongrats on the three new hubs. When volume grows that fast, the paperwork usually grows faster: e-way bills, invoices and data copied between the TMS and the GST portal.\n\nWe help logistics teams automate that work, so trucks don't wait at checkpoints for documents and the back office doesn't need to grow with every new hub.\n\nIs shipment paperwork slowing your team down at all, or is it under control?\n\nPriya\nRouteSync\n\n## Why this works\n- Opens with their news, not your product.\n- Ends with an easy question instead of asking for 30 minutes."},
  {id:"email_reply",icon:"↩",label:"Reply to email",title:"Reply to an email",
   intro:"Paste the email you got. Get a reply that answers them, handles any objection, and moves things forward.",
   needsProduct:false,
@@ -394,16 +394,16 @@ const TOOLS=[
    {k:"intent",label:"What do you want from this reply?",type:"select",opts:["Move to a short call","Handle their objection","Answer their question","Keep the door open politely","Close the conversation politely"]},
    {k:"notes",label:"Extra context",hint:"(optional)",ph:"e.g. We spoke at a conference last month"}
   ],
-  example:"## Reply\nHi Arjun,\n\nThanks for the honest reply. Timing matters, and I won't push.\n\nOne thought: most teams we work with start planning next year's tools around now. If it helps, I can send a one-page summary of what invoice automation costs and saves for a team your size, so it's ready when budgets open.\n\nWould that be useful, or should I check back in January?\n\nPriya\n\n## Shorter version\nUnderstood, Arjun. Want a one-page cost and savings summary for your budget planning, or shall I check back in January?"},
+  example:"## Reply\nHi Arjun,\n\nThanks for the honest reply. Timing matters, and I won't push.\n\nOne thought: most teams plan next year's security budget around now. If it helps, I can send a one-page summary of the gaps we usually find in a first review for a company your size, so it's ready when budgets open.\n\nWould that be useful, or should I check back in January?\n\nPriya\n\n## Shorter version\nUnderstood, Arjun. Want a one-page summary of common security gaps for your budget planning, or shall I check back in January?"},
  {id:"linkedin",icon:"in",label:"LinkedIn message",title:"LinkedIn message",
   intro:"Connection notes, first messages and follow-ups that sound like a person, not a pitch.",
   needsProduct:false,
   fields:[
    {k:"type",label:"Type of message",type:"select",opts:["Connection request note (under 300 characters)","First message after they accept","Follow-up (no reply)","Comment on their post"]},
-   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. VP Finance at a pharma company in Hyderabad"},
-   {k:"context",label:"What do you know about them?",hint:"(optional)",area:true,ph:"e.g. Posted last week about closing the books faster"}
+   {k:"prospect",label:"Who is it to?",req:true,ph:"e.g. Head of IT at a hospital chain in Hyderabad"},
+   {k:"context",label:"What do you know about them?",hint:"(optional)",area:true,ph:"e.g. Posted last week about moving to the cloud"}
   ],
-  example:"## Version 1\nHi Ananya, your post on closing the books in 5 days was spot on, especially the part about invoice matching. I work with finance teams on the same problem. Would be good to connect.\n\n## Version 2\nHi Ananya, I follow finance leaders working on faster month-end close, and your recent post stood out. Would love to connect and learn how your team approaches it.\n\n## Follow-up if they accept but don't reply\nThanks for connecting, Ananya. Curious: is invoice entry still the slowest part of close for your team, or have you solved that one?"},
+  example:"## Version 1\nHi Rahul, your post on moving workloads to the cloud was spot on, especially the point about costs creeping up after migration. I work with tech teams on that exact problem. Would be good to connect.\n\n## Version 2\nHi Rahul, I follow tech leaders working through cloud migrations, and your recent post stood out. Would love to connect and learn how your team approaches it.\n\n## Follow-up if they accept but don't reply\nThanks for connecting, Rahul. Curious: is keeping cloud costs predictable a challenge for your team now, or is it under control?"},
  {id:"coach",icon:"?",label:"Ask a sales coach",title:"Ask a sales coach",
   intro:"Any sales question: handling an objection, pricing, follow-ups, what to say next. Get a straight, practical answer.",
   needsProduct:false,
