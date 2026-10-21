@@ -183,6 +183,18 @@ dialog::backdrop{background:rgba(7,20,15,.6)}
 .dlg p{color:var(--muted)}
 .x{position:absolute;right:14px;top:12px;border:0;background:none;font-size:24px;cursor:pointer;color:var(--muted)}
 
+.banner.demo{background:var(--accent-soft);color:var(--accent-deep)}
+.banner.demo a{font-weight:700}
+.pay-h{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--ink);color:var(--on-ink);padding:18px 52px 18px 20px;border-radius:22px 22px 0 0}
+.pay-h small{display:block;color:var(--on-ink-mut);font-size:12.5px}
+.pay-logo{width:34px;height:34px;border-radius:9px;background:var(--accent)}
+.pay-amt{font:700 22px var(--display)}
+.pay .x{color:var(--on-ink-mut);z-index:1}
+.pay-demo{font:500 11.5px var(--mono);letter-spacing:.04em;background:var(--warn-soft);color:var(--warn);padding:8px 10px;border-radius:8px}
+.pms{display:grid;gap:8px}
+.pm{display:grid;gap:2px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:12px 14px;cursor:pointer;font:inherit;color:var(--text)}
+.pm:hover{border-color:var(--accent)}
+.pm span{font-size:13px;color:var(--muted)}
 footer{background:var(--ink);color:var(--on-ink-mut);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 footer nav{all:unset;display:flex;gap:16px;flex-wrap:wrap}
@@ -236,6 +248,7 @@ footer a:hover{color:var(--on-ink)}
   <div class="wrap">
     <div class="shead"><span class="label">The tools</span><h2>Pick what you need to write.</h2><p>Fill in a few details, click Write it, and copy the result. Your details about your product are saved on this device, so you only type them once.</p></div>
 
+    <div class="banner demo" id="demoBar" hidden><b>Demo mode.</b> Everything works so you can review it, but nothing is real: sign-in is instant, answers are the saved examples, and payments are simulated. No money is taken. <a href="/ai">Exit demo</a></div>
     <div class="banner" id="soon" hidden>Meetbound AI is opening soon. You can explore every tool and its example below.</div>
 
     <div class="acct" id="acct">
@@ -354,6 +367,26 @@ footer a:hover{color:var(--on-ink)}
     <h3>Check your email</h3>
     <p>We sent a sign-in link to <b id="sentTo"></b>. Open it on this device and you'll come straight back here, signed in. Check spam if it doesn't arrive within a minute.</p>
     <button class="btn" type="button" id="signAgain" style="color:var(--text)">Use a different email</button>
+  </div>
+</dialog>
+
+<dialog id="payDlg" aria-labelledby="payPlan" class="pay">
+  <button class="x" type="button" id="payClose" aria-label="Close">×</button>
+  <div class="pay-h"><span class="pay-logo" aria-hidden="true"></span><div><b id="payPlan"></b><small>Monthly subscription · renews automatically</small></div><span class="pay-amt" id="payAmt"></span></div>
+  <div class="dlg" id="payStep1">
+    <p class="pay-demo">DEMO CHECKOUT · no money will be taken. The live site uses Razorpay's secure window here.</p>
+    <p>Paying as <b id="payEmail"></b></p>
+    <div class="pms">
+      <button class="pm" type="button" data-m="UPI"><b>UPI</b><span>GPay, PhonePe, Paytm, BHIM</span></button>
+      <button class="pm" type="button" data-m="card"><b>Card</b><span>Visa, Mastercard, RuPay</span></button>
+      <button class="pm" type="button" data-m="net banking"><b>Net banking</b><span>All major banks</span></button>
+    </div>
+  </div>
+  <div class="dlg" id="payStep2" hidden><div class="thinking"><span class="dots"><i></i><i></i><i></i></span>Processing <span id="payHow"></span> payment…</div></div>
+  <div class="dlg" id="payStep3" hidden>
+    <h3>Payment successful ✓</h3>
+    <p id="payDone"></p>
+    <button class="btn solid" type="button" id="payFinish">Start writing</button>
   </div>
 </dialog>
 
@@ -478,7 +511,7 @@ function renderBody(container,body){
 }
 function showOutput(text,isExample){
   $("outTitle").textContent=tool.title;
-  $("outTag").textContent=isExample?"Example answer":"Your answer";
+  $("outTag").textContent=isExample?"Example answer":(DEMO?"Demo answer":"Your answer");
   $("outTag").className="tag "+(isExample?"ex":"yours");
   const out=$("out");out.replaceChildren();
   const parts=text.split(/^##\s+/m);const pre=parts.shift();
@@ -491,6 +524,7 @@ function showOutput(text,isExample){
 }
 function showThinking(){const out=$("out");out.replaceChildren();const t=el("div","thinking");const d=el("span","dots");d.append(el("i"),el("i"),el("i"));t.append(d,document.createTextNode("Writing your "+tool.title.toLowerCase()+"…"));out.append(t);$("outTag").textContent="Writing";$("outTag").className="tag yours"}
 function showUpsell(){
+  $("outTag").textContent="No answers left";$("outTag").className="tag ex";
   const out=$("out");out.replaceChildren();const u=el("div","upsell");
   u.append(el("h3",null,"You've used all your answers"),el("p",null,"Pick a plan to keep writing. Plans start at ₹199 a month for 50 answers, and you can cancel anytime."));
   const a=el("a","btn solid","See plans");a.href="#pricing";u.append(a);out.append(u);
@@ -499,13 +533,41 @@ function showUpsell(){
 /* ---------- config, auth, account ---------- */
 let cfg=null,sb=null,session=null,status=null;
 async function token(){if(!sb)return null;const{data}=await sb.auth.getSession();return data.session?data.session.access_token:null}
+/* ---------- demo mode (?demo=1): simulates accounts, answers and payment ---------- */
+const DEMO=/[?&]demo=1\b/.test(location.search);
+const DEMO_PLANS={p199:{name:"Starter",price:199,limit:50},p299:{name:"Pro",price:299,limit:150},p399:{name:"Power",price:399,limit:400}};
+let demo={plan:"free",free_used:0,used:0,period_end:null,sub:null};
+function demoStatus(){
+  const active=demo.plan!=="free"&&demo.period_end&&new Date(demo.period_end)>new Date();
+  const limit=active?DEMO_PLANS[demo.plan].limit:0,used=active?demo.used:0;
+  return{plan:active?demo.plan:"free",active,renewing:active&&demo.sub==="active",subscription_status:demo.sub,period_end:demo.period_end,limit,used,plan_left:Math.max(0,limit-used),free_left:Math.max(0,3-demo.free_used),remaining:Math.max(0,limit-used)+Math.max(0,3-demo.free_used)};
+}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function demoApi(path){
+  if(path==="/api/me")return{ok:true,status:200,data:demoStatus()};
+  if(path==="/api/generate"){
+    const st=demoStatus();
+    if(st.active&&st.plan_left>0)demo.used++;else if(st.free_left>0)demo.free_used++;
+    else return{ok:false,status:402,data:{code:"no_credits",status:st}};
+    await wait(1400);
+    return{ok:true,status:200,data:{text:tool.example,status:demoStatus()}};
+  }
+  if(path==="/api/cancel"){demo.sub="cancel_scheduled";return{ok:true,status:200,data:{status:demoStatus()}}}
+  return{ok:false,status:404,data:{message:"Not available in the demo."}};
+}
 async function api(path,opts={}){
+  if(DEMO)return demoApi(path,opts);
   const t=await token();const h={"content-type":"application/json"};if(t)h.authorization="Bearer "+t;
   const r=await fetch(path,{method:opts.method||"GET",headers:h,body:opts.body?JSON.stringify(opts.body):undefined});
   const d=await r.json().catch(()=>({code:"server_error",message:"Something went wrong. Try again."}));
   return{ok:r.ok,status:r.status,data:d};
 }
 async function init(){
+  if(DEMO){
+    cfg={ready:{auth:true,ai:true,payments:true},plans:DEMO_PLANS};
+    $("soon").hidden=true;$("demoBar").hidden=false;$("goNote").textContent="Uses 1 answer · demo";
+    renderAcct();return;
+  }
   try{const r=await fetch("/api/config");cfg=await r.json()}catch{cfg=null}
   const live=cfg&&cfg.ready&&cfg.ready.auth&&cfg.ready.ai;
   $("soon").hidden=!!live;
@@ -547,12 +609,12 @@ function renderAcct(){
   const so=el("button","linkbtn","Sign out");so.type="button";so.onclick=signOut;act.append(so);
 }
 function signButton(){const b=el("button","btn small","Sign in");b.type="button";b.style.color="var(--text)";b.onclick=()=>openSign();return b}
-async function signOut(){if(sb)await sb.auth.signOut();session=null;status=null;renderAcct()}
+async function signOut(){if(DEMO){demo={plan:"free",free_used:0,used:0,period_end:null,sub:null}}if(sb)await sb.auth.signOut();session=null;status=null;renderAcct()}
 
 /* sign-in dialog */
 const dlg=$("signDlg");
 function openSign(why){
-  if(!sb){$("formErr").textContent="Sign-in opens soon. Explore the examples for now.";return}
+  if(!sb&&!DEMO){$("formErr").textContent="Sign-in opens soon. Explore the examples for now.";return}
   $("signWhy").textContent=why||"Enter your email and we'll send you a sign-in link. No password needed. New accounts get 3 free answers.";
   $("signForm").hidden=false;$("signSent").hidden=true;$("signErr").textContent="";
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");
@@ -564,6 +626,13 @@ $("signForm").addEventListener("submit",async e=>{
   e.preventDefault();const email=$("signEmail").value.trim();
   if(!/^\S+@\S+\.\S+$/.test(email)){$("signErr").textContent="Enter a valid email, like you@company.com.";return}
   $("signGo").disabled=true;$("signErr").textContent="";
+  if(DEMO){
+    $("sentTo").textContent=email;$("signForm").hidden=true;$("signSent").hidden=false;
+    await wait(1500);$("signGo").disabled=false;dlg.close();
+    session={user:{email}};status=demoStatus();renderAcct();
+    $("formErr").textContent="";$("payMsg").textContent="";
+    return;
+  }
   const{error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname+"#tools"}});
   $("signGo").disabled=false;
   if(error){$("signErr").textContent=/rate|seconds/i.test(error.message)?"Please wait a minute before asking for another link.":"Couldn't send the link. Check the email and try again.";return}
@@ -594,6 +663,7 @@ function loadRazorpay(){return new Promise((ok,no)=>{if(window.Razorpay)return o
 document.querySelectorAll(".sub").forEach(b=>b.addEventListener("click",async()=>{
   const plan=b.dataset.plan;$("payMsg").textContent="";$("payMsg").classList.remove("err");
   if(!session){openSign("Sign in first, then choose your plan. We'll email you a sign-in link.");return}
+  if(DEMO){openDemoPay(plan);return}
   b.disabled=true;const label=b.textContent;b.textContent="Opening payment…";
   try{
     const r=await api("/api/subscribe",{method:"POST",body:{plan}});
@@ -615,6 +685,26 @@ document.querySelectorAll(".sub").forEach(b=>b.addEventListener("click",async()=
   }catch(err){$("payMsg").textContent=err.message||"Couldn't open the payment window. Try again.";$("payMsg").classList.add("err")}
   finally{b.disabled=false;b.textContent=label}
 }));
+/* demo checkout: looks like a payment window; takes no money */
+const payDlg=$("payDlg");let payPlan=null;
+function openDemoPay(plan){
+  payPlan=plan;const P=DEMO_PLANS[plan];
+  $("payPlan").textContent="Meetbound AI · "+P.name+" plan";$("payAmt").textContent="₹"+P.price;
+  $("payEmail").textContent=(session&&session.user.email)||"";
+  $("payStep1").hidden=false;$("payStep2").hidden=true;$("payStep3").hidden=true;
+  if(payDlg.showModal)payDlg.showModal();else payDlg.setAttribute("open","");
+}
+document.querySelectorAll(".pm").forEach(btn=>btn.addEventListener("click",async()=>{
+  $("payStep1").hidden=true;$("payStep2").hidden=false;$("payHow").textContent=btn.dataset.m;
+  await wait(1600);
+  demo.plan=payPlan;demo.used=0;demo.sub="active";demo.period_end=new Date(Date.now()+30*864e5).toISOString();
+  $("payStep2").hidden=true;$("payStep3").hidden=false;$("payDone").textContent="You're on the "+DEMO_PLANS[payPlan].name+" plan: "+DEMO_PLANS[payPlan].limit+" answers this month.";
+  status=demoStatus();renderAcct();
+  $("payMsg").textContent="Demo payment complete. In the live version this is a real Razorpay payment.";
+}));
+$("payClose").onclick=()=>{payDlg.close();if(!$("payStep3").hidden)location.hash="tools";else $("payMsg").textContent="Payment cancelled. You haven't been charged."};
+$("payFinish").onclick=()=>{payDlg.close();location.hash="tools"};
+
 async function cancelRenewal(){
   if(!confirm("Stop your plan renewing? You keep your answers until the end of this month."))return;
   const r=await api("/api/cancel",{method:"POST"});
